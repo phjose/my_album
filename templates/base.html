@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Album</title>
+</head>
+<body>
+    <h1>Album</h1>
+    <ul>
+        <li>
+            <a href="{% url 'category-list' %}">Category</a>
+        </li>
+        <li>
+            <a href="{% url 'photo-list' %}">Photo</a>
+        </li>
+        <li>
+            <a href="{% url 'photo-create' %}">Upload</a>
+        </li>
+    </ul>
+    <hr>
+    <div>
+        {% block section %}
+        {% endblock section %}
+    </div>
+    <div>
+        {% block maincontent %}
+        {% endblock maincontent %}
+    </div>
+</body>
+</html>
