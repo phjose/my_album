@@ -8,22 +8,27 @@
 {% endblock section %}
 
 {% block maincontent %}
-<div class="container-fluid">
-    <div>
-        <table class="table" border="1px">
-            <tr>
-                {% for p in object_list.all %}
-                    <td>
-                        <div>{{ p.title }}</div>
-                        <div>
-                            <a href="{% url "photo-detail" p.id %}">
-                                <img src="{% static p.photo.url %}" style="width:200px;height:200px"/>
-                            </a>
-                        </div>
-                    </td>
-                {% endfor %}
-            </tr>
-        </table>
+    <div class="row well">
+        {% for p in object_list.all %}
+            <div class="col-md-4 well">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{ p.title }}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <a href="{% url "photo-detail" p.id %}">
+                            <img src="{% static p.photo.url %}" style="width:200px;height:200px;"/>
+                        </a>
+                    </div>
+                    <div class="panel-footer">
+                        {% if p.comment %}
+                            {{ p.comment }}
+                        {% else %}
+                            <a href="{% url "photo-update" p.id %}">edit comments</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
-</div>
 {% endblock maincontent %}
